@@ -24,6 +24,8 @@ const corsMiddleware = cors({origin: '*', preflightContinue: true})
 app.use(corsMiddleware);
 app.options('*', corsMiddleware);
 
+httpRouter(app);
+
 const appServer: express.Application = app;
 
 export default appServer;

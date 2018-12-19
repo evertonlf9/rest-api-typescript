@@ -6,9 +6,11 @@
   "repository": "git@github.com:evertonlf9/rest-api-typescript.git",
   "scripts": {
     "sequelize": "node_modules/.bin/sequelize",
-    "build": "rm -rf ./build && tsc",
-    "build:watch": "rm -rf ./build && tsc --watch",
-    "start": "NODE_ENV=development && node ./build/server.js"
+    "build": "rimraf build && tsc",
+    "build:watch": "rimraf build && tsc --watch",
+    "start": "SET NODE_ENV=development && node ./build/server.js",
+    "test": "jest --coverage --runInBand -u && codecov",
+    "test:watch": "jest  --watch"
   },
   "keywords": [
     "rest",
