@@ -1,12 +1,21 @@
 require('babel-polyfill');
 
-if(process.env.NODE_ENV !== 'PROSUCTION' ){
+if(process.env.NODE_ENV !== 'PRODUCTION' ){
     require('dotenv').config();
 }
 
 import * as http from 'http';
 import app from './app';
 import * as iconvLite from 'iconv-lite';
+import {sequelize} from './models';
+
+async function dbInit(){
+  await sequelize.sync();
+}
+
+if(process.env.NODE_ENV !== 'test'){
+  dbInit();
+}
 
 iconvLite.encodingExists('foo');
 
